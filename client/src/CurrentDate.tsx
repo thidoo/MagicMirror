@@ -1,24 +1,18 @@
-import React from 'react';
-
-import Day from './Day.js';
+import * as React from 'react';
 
 class CurrentDate extends React.Component {
   constructor() {
     super();
     let today = new Date();
     this.state = {
-      day : today.getDay(),
+      day = today.getDay(),
     };
-  }
-
-  renderDay(dayId) {
-    return <Day value={dayId} />;
   }
 
   render(){
     return (
       <div className='day'>
-        <Day value={this.state.day} />
+        {this.state.day}
       </div>
     );
   }
