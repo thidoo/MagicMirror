@@ -9,7 +9,11 @@ class Time extends React.Component {
 }
 
 function computeTime(time){
-  return String(time[0]).concat(":", time[1], ":", time[2]);
+  return String(getTimeInTwoDigits(time[0]).concat(":", getTimeInTwoDigits(time[1]), ":", getTimeInTwoDigits(time[2])));
+}
+
+function getTimeInTwoDigits(number){
+  return (number < 10 ? '0' : '') + number;
 }
 
 export default Time;
