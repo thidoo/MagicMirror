@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './CurrentDateTime.css';
+
 import Day from './Day.js';
 import DateMonthYear from './DateMonthYear.js';
 import Time from './Time.js';
@@ -32,10 +34,10 @@ class CurrentDate extends React.Component {
 
   render(){
     return (
-      <div className='current-date'>
-        <Day className='day' value={this.state.today.getDay()} />
-        <DateMonthYear className='date-month-year' value={[this.state.today.getDate(), this.state.today.getMonth(), this.state.today.getFullYear()]} />
-        <Time className='time' value={[this.state.today.getHours(), this.state.today.getMinutes(), this.state.today.getSeconds()]} />
+      <div>
+        <div className='day'><Day  value={this.state.today.getDay()} /></div>
+        <div className='date-month-year'><DateMonthYear  value={[this.state.today.getDate(), this.state.today.getMonth(), this.state.today.getFullYear()]} /></div>
+        <div className='time'><Time  value={[this.state.today.getHours(), this.state.today.getMinutes(), this.state.today.getSeconds()]} /></div>
       </div>
     );
   }
