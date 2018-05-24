@@ -24,7 +24,7 @@ class WeatherRequest extends Component {
   }
 
   convertToFToC(temperatureInF){
-    return temperatureInF - 273.15;
+    return Math.round(temperatureInF - 273.15);
   }
 
   capitaliseFirstLetter(description){

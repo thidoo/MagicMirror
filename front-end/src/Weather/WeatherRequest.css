@@ -1,5 +1,4 @@
 .WeatherRequest {
-  flex: 25%;
-  text-align: right;
+  text-align: left;
   padding-right: 0.5em;
 }
