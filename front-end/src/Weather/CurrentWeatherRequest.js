@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './WeatherRequest.css';
+import './CurrentWeatherRequest.css';
 
-import CurrentWeather from './CurrentWeather.js';
+import CurrentWeather from './CurrentWeather';
+import WeeklyWeatherRequest from './WeeklyWeatherRequest';
+import {convertToFToC, capitaliseFirstLetter} from './WeatherService';
 
-class WeatherRequest extends Component {
+class CurrentWeatherRequest extends Component {
 
   constructor(props) {
     super(props);
@@ -23,14 +25,6 @@ class WeatherRequest extends Component {
     this.fetchWeather();
   }
 
-  convertToFToC(temperatureInF){
-    return Math.round(temperatureInF - 273.15);
-  }
-
-  capitaliseFirstLetter(description){
-    return description.charAt(0).toUpperCase() + description.slice(1);
-  }
-
   fetchWeather() {
     axios.get('http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au?&APPID=4a1fe1f56f0aca5ec03a7ba51fc9aa31')
       .then( (response) => {
@@ -38,8 +32,8 @@ class WeatherRequest extends Component {
           allData: response.data,
           weatherInfo: {
             location: response.data.name,
-            weatherDescription: this.capitaliseFirstLetter(response.data.weather[0].description),
-            temperature: this.convertToFToC(response.data.main.temp),
+            weatherDescription: capitaliseFirstLetter(response.data.weather[0].description),
+            temperature: convertToFToC(response.data.main.temp),
           }
         });
       })
@@ -56,9 +50,10 @@ class WeatherRequest extends Component {
           weatherDescription={this.state.weatherInfo.weatherDescription}
           temperature={this.state.weatherInfo.temperature}
         />
+        <div className="WeeklyWeatherRequest"><WeeklyWeatherRequest/></div>
       </div>
     );
   }
 }
 
-export default WeatherRequest;
+export default CurrentWeatherRequest;

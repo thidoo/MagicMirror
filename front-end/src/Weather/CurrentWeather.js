@@ -11,7 +11,7 @@ class CurrentWeather extends React.Component {
         <div className="weatherDescription">{this.props.weatherDescription}</div>
         <div className="temperature">{this.props.temperature}{"\xB0"}</div>
       </div>
-    )
+  )
   }
 }
 
