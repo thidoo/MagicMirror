@@ -1,4 +1,4 @@
-export default function(dayId) {
+function buildDay(fullDate) {
   let weekday = new Array(7);
   weekday[0] = "Sunday";
   weekday[1] = "Monday";
@@ -8,5 +8,7 @@ export default function(dayId) {
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
 
-  return weekday[dayId];
+  return weekday[fullDate.getDay()];
 };
+
+export default buildDay;

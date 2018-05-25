@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './CurrentWeather.css';
+import './CurrentWeatherUI.css';
 
-class CurrentWeather extends React.Component {
+class CurrentWeatherUI extends React.Component {
 
   render(){
     return (
@@ -15,4 +15,4 @@ class CurrentWeather extends React.Component {
   }
 }
 
-export default CurrentWeather;
+export default CurrentWeatherUI;

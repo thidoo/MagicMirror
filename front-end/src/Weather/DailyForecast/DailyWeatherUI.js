@@ -1,10 +1,12 @@
 import React from 'react';
 
-class DayWeather extends React.Component {
+import './DailyWeatherUI.css';
+
+class DailyWeatherUI extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="weatherRow">
         <div className="day">{this.props.day}</div>
         <div className="minTemp">{this.props.minTemp}{"\xB0"}</div>
         <div className="maxTemp">{this.props.maxTemp}{"\xB0"}</div>
@@ -14,4 +16,4 @@ class DayWeather extends React.Component {
   }
 }
 
-export default DayWeather;
+export default DailyWeatherUI;

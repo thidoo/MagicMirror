@@ -1,0 +1,13 @@
+.Weather {
+    display: flex;
+    flex-direction: column;
+}
+
+.CurrentWeather {
+    flex: auto;
+    padding-bottom: 2em;
+}
+
+.DailyWeather {
+    flex: auto;
+}

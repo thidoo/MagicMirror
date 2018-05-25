@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 
-import './CurrentWeatherRequest.css';
+import './CurrentWeather.css';
 
-import CurrentWeather from './CurrentWeather';
-import WeeklyWeatherRequest from './WeeklyWeatherRequest';
-import {convertToFToC, capitaliseFirstLetter} from './WeatherService';
+import CurrentWeatherUI from './CurrentWeatherUI';
+import {convertFromKelvinToCelcius, capitaliseFirstLetter} from '../Service/WeatherService';
 
-class CurrentWeatherRequest extends Component {
+class CurrentWeather extends React.Component {
 
   constructor(props) {
     super(props);
@@ -33,7 +32,7 @@ class CurrentWeatherRequest extends Component {
           weatherInfo: {
             location: response.data.name,
             weatherDescription: capitaliseFirstLetter(response.data.weather[0].description),
-            temperature: convertToFToC(response.data.main.temp),
+            temperature: convertFromKelvinToCelcius(response.data.main.temp),
           }
         });
       })
@@ -45,15 +44,14 @@ class CurrentWeatherRequest extends Component {
   render() {
     return (
       <div>
-        <CurrentWeather
+        <CurrentWeatherUI
           location={this.state.weatherInfo.location}
           weatherDescription={this.state.weatherInfo.weatherDescription}
           temperature={this.state.weatherInfo.temperature}
         />
-        <div className="WeeklyWeatherRequest"><WeeklyWeatherRequest/></div>
       </div>
     );
   }
 }
 
-export default CurrentWeatherRequest;
+export default CurrentWeather;

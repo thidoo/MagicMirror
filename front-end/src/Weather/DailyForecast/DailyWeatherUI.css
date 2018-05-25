@@ -1,0 +1,26 @@
+.weatherRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+.day{
+    flex: 25%;
+    align-items: left;
+}
+
+.minTemp{
+    flex: 15%;
+    align-items: left;
+}
+
+.maxTemp{
+    flex: 15%;
+    align-items: left;
+}
+
+.description{
+    flex: 45%;
+    align-items: left;
+}

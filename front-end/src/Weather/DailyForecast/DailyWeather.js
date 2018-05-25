@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {convertToDayWeather} from "../Converter/WeatherDataConverter";
-import DayWeather from "./DayWeather";
 
-class WeeklyWeatherRequest extends Component {
+import {convertToDayWeather} from "../Converter/WeatherDataConverter";
+import DailyWeatherUI from "./DailyWeatherUI";
+
+class DailyWeather extends Component {
 
   constructor(props) {
     super(props);
@@ -33,7 +34,7 @@ class WeeklyWeatherRequest extends Component {
     let dayWeatherShortData = convertToDayWeather(dayWeatherFullData);
     return (
       <div>
-        <DayWeather
+        <DailyWeatherUI
           day={dayWeatherShortData.day}
           minTemp={dayWeatherShortData.minTemp}
           maxTemp={dayWeatherShortData.maxTemp}
@@ -52,4 +53,4 @@ class WeeklyWeatherRequest extends Component {
   }
 }
 
-export default WeeklyWeatherRequest;
+export default DailyWeather;
