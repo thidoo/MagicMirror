@@ -1,9 +1,20 @@
-function convertFromKelvinToCelcius(temperatureInF){
-  return Math.round(temperatureInF - 273.15);
+class WeatherService {
+
+  constructor(weatherHttpClient, weatherDataConverter){
+    this.weatherHttpClient = weatherHttpClient;
+    this.weatherDataConverter = weatherDataConverter;
+  }
+
+  getCurrentWeather(){
+    let fullCurrentWeatherData = this.weatherHttpClient.fetchCurrentWeatherData();
+    return this.weatherDataConverter.convertCurrentWeatherData(fullCurrentWeatherData);
+  }
+
+  getDailyWeatherList(){
+    let fullDailyWeatherData = this.weatherHttpClient.fetchDailyWeatherData();
+    return this.weatherDataConverter.convertDailyWeatherData(fullDailyWeatherData);
+  }
+
 }
 
-function capitaliseFirstLetter(description){
-  return description.charAt(0).toUpperCase() + description.slice(1);
-}
-
-export {convertFromKelvinToCelcius, capitaliseFirstLetter};
+export default WeatherService;

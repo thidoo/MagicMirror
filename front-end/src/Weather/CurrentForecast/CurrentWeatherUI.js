@@ -6,12 +6,12 @@ class CurrentWeatherUI extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="CurrentWeather">
         <div className="location">{this.props.location}</div>
-        <div className="weatherDescription">{this.props.weatherDescription}</div>
+        <div className="weatherDescription">{this.props.description}</div>
         <div className="temperature">{this.props.temperature}{"\xB0"}</div>
       </div>
-  )
+    )
   }
 }
 
