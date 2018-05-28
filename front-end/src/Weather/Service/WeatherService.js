@@ -5,9 +5,10 @@ class WeatherService {
     this.weatherDataConverter = weatherDataConverter;
   }
 
-  getCurrentWeather(){
-    let fullCurrentWeatherData = this.weatherHttpClient.fetchCurrentWeatherData();
-    return this.weatherDataConverter.convertCurrentWeatherData(fullCurrentWeatherData);
+  async getCurrentWeather(){
+    let fullCurrentWeatherData = await this.weatherHttpClient.fetchCurrentWeatherData();
+    let weatherData = await fullCurrentWeatherData.json();
+    return this.weatherDataConverter.convertCurrentWeatherData(weatherData);
   }
 
   getDailyWeatherList(){

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CurrentWeatherUI from './CurrentWeatherUI';
+import CurrentWeather from './CurrentWeather';
 import WeatherService from '../Service/WeatherService';
 import WeatherHttpClient from '../Service/WeatherHttpClient';
 import WeatherDataConverter from '../Service/WeatherDataConverter';
@@ -20,8 +20,10 @@ class CurrentWeatherContainer extends React.Component {
     }
   }
 
-  componentDidMount(){
-    let currentWeatherData = this.weatherService.getCurrentWeather();
+  async componentDidMount(){
+    console.log('Started featching weather data');
+    let currentWeatherData = await this.weatherService.getCurrentWeather();
+    console.log('Weather data: ', currentWeatherData);
     this.setState({
       currentWeather: {
         location: currentWeatherData.location,
@@ -32,7 +34,7 @@ class CurrentWeatherContainer extends React.Component {
   }
 
   render() {
-    return <CurrentWeatherUI value={this.state.currentWeather}/>
+    return <CurrentWeather value={this.state.currentWeather}/>
   }
 }
 

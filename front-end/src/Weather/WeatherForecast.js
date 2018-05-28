@@ -10,7 +10,7 @@ class WeatherForecast extends React.Component {
     return (
       <div className="Weather">
         <CurrentWeatherContainer/>
-        <DailyWeatherListContainer/>
+        {/*<DailyWeatherListContainer/>*/}
       </div>
     )
   }
