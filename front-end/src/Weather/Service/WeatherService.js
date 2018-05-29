@@ -7,6 +7,7 @@ class WeatherService {
 
   async getCurrentWeather(){
     let fullCurrentWeatherData = await this.weatherHttpClient.fetchCurrentWeatherData();
+    console.log("full",fullCurrentWeatherData);
     let weatherData = await fullCurrentWeatherData.json();
     return this.weatherDataConverter.convertCurrentWeatherData(weatherData);
   }

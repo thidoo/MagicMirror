@@ -1,41 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import CurrentWeather from './CurrentWeather';
-import WeatherService from '../Service/WeatherService';
-import WeatherHttpClient from '../Service/WeatherHttpClient';
-import WeatherDataConverter from '../Service/WeatherDataConverter';
+
+import { updateCurrentWeather } from "./actions";
 
 class CurrentWeatherContainer extends React.Component {
 
   constructor(props) {
     super(props);
-    this.weatherService = new WeatherService(new WeatherHttpClient(), new WeatherDataConverter());
-
-    this.state = {
-      currentWeather: {
-        location: '',
-        description: '',
-        temperature: '',
-      }
-    }
   }
 
-  async componentDidMount(){
-    console.log('Started featching weather data');
-    let currentWeatherData = await this.weatherService.getCurrentWeather();
-    console.log('Weather data: ', currentWeatherData);
-    this.setState({
-      currentWeather: {
-        location: currentWeatherData.location,
-        description: currentWeatherData.description,
-        temperature: currentWeatherData.temperature,
-      }
-    });
+  componentDidMount(){
+    this.props.updateCurrentWeather();
   }
 
   render() {
-    return <CurrentWeather value={this.state.currentWeather}/>
+    const {currentWeather} = this.props.currentWeather;
+    console.log("currentWeather", currentWeather);
+    return <CurrentWeather value={this.props.currentWeather}/>
   }
 }
 
-export default CurrentWeatherContainer;
+function mapStateToProps(state, ownProps){
+  return {
+    currentWeather: state.currentWeather
+  }
+}
+
+function mapDispatchToProps() {
+  return {
+    updateCurrentWeather
+  }
+}
+
+const CurrentWeatherContainerContainer = connect(mapStateToProps, mapDispatchToProps)(CurrentWeatherContainer);
+
+export default CurrentWeatherContainerContainer;
