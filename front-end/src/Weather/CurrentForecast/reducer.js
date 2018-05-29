@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import {RECEIVE_CURRENT_WEATHER, REQUEST_CURRENT_WEATHER} from "../Weather/CurrentForecast/actions";
+import {RECEIVE_CURRENT_WEATHER, REQUEST_CURRENT_WEATHER} from "./actions";
 
 const initialState = {
   isFetching: false,
@@ -27,7 +27,7 @@ function updateCurrentWeather(state = initialState, action){
 
 const rootReducer = combineReducers({
   updateCurrentWeather,
-})
+});
 
 export default rootReducer;
 

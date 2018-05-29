@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import configureStore from '../store/store';
+import configureStore from './CurrentForecast/store';
 
-import CurrentWeatherContainerContainer from './CurrentForecast/CurrentWeatherContainer';
+import CurrentWeatherContainer from './CurrentForecast/CurrentWeatherContainer';
 import DailyWeatherListContainer from './DailyForecast/DailyWeatherListContainer';
 
 import './WeatherForecast.css';
@@ -19,7 +19,7 @@ class WeatherForecast extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <CurrentWeatherContainerContainer/>
+        <CurrentWeatherContainer/>
         {/*<DailyWeatherListContainer/>*/}
       </Provider>
     )

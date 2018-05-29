@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CurrentWeather from './CurrentWeather';
+import { fetchCurrentWeatherData } from "./actions";
 
-import { updateCurrentWeather } from "./actions";
+import CurrentWeather from './CurrentWeather';
+import WeatherDataConverter from "../Service/WeatherDataConverter";
 
 class CurrentWeatherContainer extends React.Component {
 
@@ -12,28 +13,27 @@ class CurrentWeatherContainer extends React.Component {
   }
 
   componentDidMount(){
-    this.props.updateCurrentWeather();
+    console.log("before");
+    this.props.fetchCurrentWeatherData('http://api.openweathermap.org/data/2.5/weather?q=Melbourne,au?&APPID=4a1fe1f56f0aca5ec03a7ba51fc9aa31',
+                                        new WeatherDataConverter());
+    console.log("after: ");
   }
 
   render() {
-    const {currentWeather} = this.props.currentWeather;
-    console.log("currentWeather", currentWeather);
     return <CurrentWeather value={this.props.currentWeather}/>
   }
 }
 
-function mapStateToProps(state, ownProps){
+function mapStateToProps(state) {
   return {
-    currentWeather: state.currentWeather
+    currentWeather: state.updateCurrentWeather.currentWeather
   }
 }
 
-function mapDispatchToProps() {
-  return {
-    updateCurrentWeather
+const mapDispatchToProps = dispatch => ({
+  fetchCurrentWeatherData: (url,converter) => {
+    fetchCurrentWeatherData(url, converter)(dispatch);
   }
-}
+});
 
-const CurrentWeatherContainerContainer = connect(mapStateToProps, mapDispatchToProps)(CurrentWeatherContainer);
-
-export default CurrentWeatherContainerContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeatherContainer);

@@ -27,6 +27,7 @@ class WeatherHttpClient{
   }
 
   fetchDailyWeatherData() {
+
     axios.get('http://api.openweathermap.org/data/2.5/forecast?q=Melbourne,au?&APPID=4a1fe1f56f0aca5ec03a7ba51fc9aa31')
       .then( (response) => {
 

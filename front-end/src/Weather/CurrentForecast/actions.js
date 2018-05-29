@@ -1,14 +1,7 @@
 import fetch from 'cross-fetch';
 
-export const CURRENT_WEATHER_UPDATE = 'CURRENT_WEATHER_UPDATE';
-
 export const REQUEST_CURRENT_WEATHER = 'REQUEST_CURRENT_WEATHER';
 export const RECEIVE_CURRENT_WEATHER = 'RECEIVE_CURRENT_WEATHER';
-
-export const updateCurrentWeather = currentWeather => ({
-  type: CURRENT_WEATHER_UPDATE,
-  currentWeather
-});
 
 function requestCurrentWeather(){
   return {
@@ -23,7 +16,7 @@ function receiveCurrentWeather(currentWeather){
   }
 }
 
-export function fetchCurrentWeather(url, dataConverter){
+export function fetchCurrentWeatherData(url, dataConverter){
   return dispatch => {
     dispatch(requestCurrentWeather());
 
@@ -33,25 +26,3 @@ export function fetchCurrentWeather(url, dataConverter){
       .then(currentWeatherData => dispatch(receiveCurrentWeather(currentWeatherData)))
   }
 }
-// dispatch(getCurrentWeather);
-//
-// getCurrentWeather = (dispatch) => {
-//
-//     dispatch({
-//       type: CURRENT_WEATHER_LOADING
-//     });
-//
-//     weatherApi.get().then((data) => {
-//         dispatch({
-//           type: CURRENT_WEATHER_SUCCESS,
-//           payload: data
-//         })
-//     }).catch(() => {
-//       dispatch({
-//         type: CURRENT_WEATHER_FAILURE,
-//         payload: data
-//       });
-//     });
-//
-//
-// }
